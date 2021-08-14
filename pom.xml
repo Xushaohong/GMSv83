@@ -108,7 +108,8 @@
                             <jvmSettings>
                                 <extraArguments>
                                     <extraArgument>-Dfile.encoding=UTF-8</extraArgument>
-                                    <!-- 调整内存大小 <extraArgument>-Xmx2G</extraArgument> <extraArgument>-Xms2G</extraArgument> -->
+                                    <extraArgument>-Xmx2G</extraArgument>
+                                    <extraArgument>-Xms2G</extraArgument>
                                 </extraArguments>
                             </jvmSettings>
                         </program>
