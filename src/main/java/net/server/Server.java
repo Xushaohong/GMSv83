@@ -21,6 +21,7 @@
  */
 package net.server;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.security.Security;
@@ -425,11 +426,10 @@ public class Server {
         Map<Integer, String> channelInfo = new HashMap<>();
         long bootTime = getCurrentTime();
         for (int j = 1; j <= YamlConfig.config.worlds.get(i).channels; j++) {
-            int channelid = j;
-            Channel channel = new Channel(i, channelid, bootTime);
+            Channel channel = new Channel(i, j, bootTime);
 
             world.addChannel(channel);
-            channelInfo.put(channelid, channel.getIP());
+            channelInfo.put(j, channel.getIP());
         }
         
         boolean canDeploy;
@@ -990,8 +990,12 @@ public class Server {
         tMan.register(new BossLogTask(), 24 * 60 * 60 * 1000, timeLeft);
     }
 
-    public static void main(String args[]) {
-        System.setProperty("wzpath", "wz");
+    public static void main(String args[]) throws IOException {
+        File files = new File("");
+        String rootPath = files.getCanonicalPath().replace("/target/GMSv83/bin","");
+        String wzPath = rootPath + "/wz";
+        System.setProperty("rootpath", rootPath);
+        System.setProperty("wzpath", wzPath);
         Security.setProperty("crypto.policy", "unlimited");
         AutoJCE.removeCryptographyRestrictions();
         Server.getInstance().init();

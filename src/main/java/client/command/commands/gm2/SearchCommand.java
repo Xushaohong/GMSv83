@@ -47,7 +47,8 @@ public class SearchCommand extends Command {
     {
         setDescription("");
         
-        MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
+        MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(
+            new File(System.getProperty("wzpath") + "/String.wz"));
         npcStringData = dataProvider.getData("Npc.img");
         mobStringData = dataProvider.getData("Mob.img");
         skillStringData = dataProvider.getData("Skill.img");

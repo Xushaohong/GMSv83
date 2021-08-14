@@ -36,7 +36,8 @@ import provider.MapleDataTool;
  */
 public class MaplePlayerNPCFactory {
     
-    private static MapleDataProvider npcData = MapleDataProviderFactory.getDataProvider(new File("wz/Npc.wz"));
+    private static MapleDataProvider npcData = MapleDataProviderFactory.getDataProvider(
+        new File(System.getProperty("wzpath") + "/Npc.wz"));
     
     private static final Map<Integer, List<MaplePlayerNPC>> dnpcMaps = new HashMap<>();
     private static Integer runningDeveloperOid = 2147483000;  // 647 slots, long enough
@@ -48,11 +49,13 @@ public class MaplePlayerNPCFactory {
     public static void loadDeveloperRoomMetadata(MapleDataProvider npc) {
         MapleData thisData = npc.getData("9977777.img");
         if(thisData != null) {
-            MapleDataProvider map = MapleDataProviderFactory.getDataProvider(new File("wz/Map.wz"));
+            MapleDataProvider map = MapleDataProviderFactory.getDataProvider(
+                new File(System.getProperty("wzpath") + "/Map.wz"));
             
             thisData = map.getData("Map/Map7/777777777.img");
             if(thisData != null) {
-                MapleDataProvider sound = MapleDataProviderFactory.getDataProvider(new File("wz/Sound.wz"));
+                MapleDataProvider sound = MapleDataProviderFactory.getDataProvider(
+                    new File(System.getProperty("wzpath") + "/Sound.wz"));
                 
                 thisData = sound.getData("Field.img");
                 if(thisData != null) {
@@ -69,7 +72,8 @@ public class MaplePlayerNPCFactory {
         MapleDataProvider npc = npcData;
         loadDeveloperRoomMetadata(npc);
 
-        MapleDataProvider etc = MapleDataProviderFactory.getDataProvider(new File("wz/Etc.wz"));
+        MapleDataProvider etc = MapleDataProviderFactory.getDataProvider(
+            new File(System.getProperty("wzpath") + "/Etc.wz"));
         MapleData dnpcData = etc.getData("DeveloperNpc.img");
         if(dnpcData != null) {
             for (MapleData data : dnpcData.getChildren()) {

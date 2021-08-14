@@ -31,6 +31,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.ScheduledFuture;
@@ -481,7 +482,7 @@ public final class Channel {
     
     private static String [] getEvents(){
     	List<String> events = new ArrayList<String>();
-    	for (File file : new File("scripts/event").listFiles()){
+    	for (File file : Objects.requireNonNull(new File(System.getProperty("rootpath") + "/scripts/event").listFiles())){
             events.add(file.getName().substring(0, file.getName().length() - 3));
     	}
     	return events.toArray(new String[0]);

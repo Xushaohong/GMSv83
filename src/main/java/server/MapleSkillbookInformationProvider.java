@@ -64,9 +64,8 @@ public class MapleSkillbookInformationProvider {
         REACTOR,
         SCRIPT
     }
-    
-    private static String rootDirectory = ".";
-    
+
+    private static String rootDirectory = System.getProperty("rootpath");
     private static int skillbookMinItemid = 2280000;
     private static int skillbookMaxItemid = 2300000;  // exclusively
     

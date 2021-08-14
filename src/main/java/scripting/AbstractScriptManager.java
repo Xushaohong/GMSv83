@@ -45,7 +45,7 @@ public abstract class AbstractScriptManager {
     }
 
     protected NashornScriptEngine getScriptEngine(String path) {
-        path = "scripts/" + path;
+        path = System.getProperty("rootpath")+"/scripts/" + path;
         File scriptFile = new File(path);
         if (!scriptFile.exists()) {
             return null;
