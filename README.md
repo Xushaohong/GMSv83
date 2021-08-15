@@ -305,3 +305,28 @@ It is not done yet, sometimes the firewalls will block connections between the L
 These rules must target "one application", "enable connections" and must target your MapleStory client (aka localhost).
 
 After all these steps, the portforwarding process should now be complete.
+
+---
+### How to play with it ?
+
+#### Step 1
+
+git clone the repo and compile (with maven)
+```
+mvn clean package
+```
+#### Step 1.1
+Edit your own config.yaml in target directory (or you can edit it before compiling)
+
+Make sure the ip and datasource settings are right.
+ 
+#### Step 2
+Configure your Mysql DB
+
+Inject the Sql scripts into the DB as what was told in HeavenMS 
+ 
+#### Step 3
+Run .sh/.bat script in target/bin directory, the server should set up normally
+
+#### Step 4
+Open your client, feel free!
